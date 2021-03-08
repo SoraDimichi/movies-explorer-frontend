@@ -41,6 +41,7 @@ const Profile = () => {
             id="email"
             onChange={(evt) => handleChange(evt)}
             defaultValue="pochta@yandex.ru"
+            required
           />
           <span className="Profile__form-input-errors" id="form-input-errors" />
           <button type="submit" className="Profile__form-submit-button hover-effect">

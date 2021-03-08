@@ -22,10 +22,12 @@ const SearchForm = () => {
           <input
             type="text"
             name="search"
+            title="Поиск"
             id="search"
             className="SearchForm__input"
             placeholder="Поиск"
             onChange={(evt) => handleChange(evt)}
+            required
           />
           <button type="submit" className="SearchForm__submit hover-effect">
             Найти
