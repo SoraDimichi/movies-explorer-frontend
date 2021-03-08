@@ -1,0 +1,36 @@
+.App {
+  margin: 0;
+  background-color: #202020;
+  color: #fff;
+  display: grid;
+  grid-auto-flow: row;
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+.hover-effect {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  margin: 0;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.hover-effect:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Отрубаем ховеры на мобильных устройствах */
+
+@media screen and (max-width: 768px) {
+  .hover-effect:hover {
+    opacity: 1;
+  }
+}
+
+.hover-effect:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.6);
+}

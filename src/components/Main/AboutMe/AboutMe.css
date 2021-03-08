@@ -1,0 +1,200 @@
+.AboutMe {
+  display: grid;
+  grid-template-columns: 1fr minmax(30px, 1fr) minmax(1px, 1140px) minmax(30px, 1fr) 1fr;
+  grid-template-rows: 100px max-content 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .AboutMe {
+    grid-template-rows: 90px max-content 45px;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe {
+    grid-template-rows: 70px max-content 35px;
+    grid-template-columns: 1fr minmax(14px, 1fr) minmax(1px, 1112px) minmax(14px, 1fr) 1fr;
+  }
+}
+
+.AboutMe__container {
+  grid-area: 2 / 3 / 3 / 4;
+  display: grid;
+  grid-template-columns: minmax(1px, 600px) 1fr 53px 327px;
+  grid-template-rows: 50px 66px max-content 18px max-content 26px max-content 18px max-content 1fr max-content;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__container {
+    grid-area: 2 / 3 / 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr 324px 1fr;
+    grid-template-rows: 50px 66px max-content 40px max-content 18px max-content 26px max-content 18px max-content 38px max-content;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__container {
+    grid-template-columns: 1fr 292px 1fr;
+    grid-template-rows: 50px 66px max-content 40px max-content 20px max-content 20px max-content 16px max-content 40px max-content;
+  }
+}
+
+.AboutMe__title {
+  grid-area: 1 / 1 / 2 / 6;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  margin: 0;
+  border-bottom: #dadada 1px solid;
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.AboutMe__story-title {
+  grid-area: 3 / 1 / 4 / 2;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__story-title {
+    grid-area: 5 / 2 / 6 / 3;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__story-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.AboutMe__story-subtitle {
+  grid-area: 5 / 1 / 6 / 2;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__story-subtitle {
+    grid-area: 7 / 2 / 8 / 3;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__story-subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.AboutMe__story-paragraph {
+  font-size: 12px;
+  line-height: 18px;
+  display: block;
+  margin: 0;
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__story-paragraph {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.AboutMe__story-paragraph:nth-of-type(2) {
+  grid-area: 7 / 1 / 8 / 2;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__story-paragraph:nth-of-type(2) {
+    grid-area: 9 / 2 / 10 / 3;
+  }
+}
+
+.AboutMe__story-paragraph:nth-of-type(3) {
+  grid-area: 9 / 1 / 10 / 2;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__story-paragraph:nth-of-type(3) {
+    grid-area: 11 / 2 / 12 / 3;
+  }
+}
+
+.AboutMe__photo {
+  grid-area: 3 / 4 / 13 / 5;
+  width: 327px;
+  height: 327px;
+  display: block;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__photo {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__photo {
+    width: 292px;
+    height: 292px;
+  }
+}
+
+.AboutMe__social-menu {
+  align-self: center;
+  grid-area: 12 / 1 / 13 / 2;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__social-menu {
+    grid-area: 15 / 2 / 16 / 3;
+  }
+}
+
+.AboutMe__social-links {
+  align-self: center;
+  margin: 0 0 -3px 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 112px;
+}
+
+.AboutMe__social-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 514px) {
+  .AboutMe__social-link {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

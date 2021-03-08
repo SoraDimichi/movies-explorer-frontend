@@ -1,0 +1,146 @@
+.Login {
+  display: grid;
+  grid-template-columns: 1fr minmax(30px, 1fr) minmax(1px, 396px) minmax(30px, 1fr) 1fr;
+  grid-template-rows: 100px 1fr 8vh;
+  grid-area: 2 / 1 / 4 / 6;
+}
+
+@media screen and (max-width: 768px) {
+  .Login {
+    grid-template-rows: 40px 1fr 20vh;
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .Login {
+    grid-template-rows: 50px 1fr 30px;
+  }
+}
+
+.Login__container {
+  display: grid;
+  grid-area: 2 / 3 / 3 / 4;
+  grid-template-columns: 1fr max-content 7px max-content 1fr;
+  grid-template-rows: max-content 40px 1fr 16px max-content;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 514px) {
+  .Login__container {
+    grid-template-rows: max-content 80px 1fr 16px max-content;
+  }
+}
+
+.Login__title {
+  grid-area: 1 / 1 / 2 / 6;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+}
+
+@media screen and (max-width: 514px) {
+  .Login__title {
+    text-align: center;
+  }
+}
+
+.Login__question {
+  grid-area: 5 / 2 / 6 / 3;
+  justify-self: end;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 514px) {
+  .Login__question {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.Login__nav-link {
+  grid-area: 5 / 4 / 6 / 5;
+  text-decoration: inherit;
+  color: #4285f4;
+  align-self: end;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 514px) {
+  .Login__nav-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.Login__form {
+  grid-area: 3 / 1 / 4 / 6;
+  display: grid;
+  align-items: start;
+  grid-template-rows: repeat(7, auto) 1fr max-content;
+}
+
+.Login__form-input {
+  padding: 15px;
+  border-radius: 8px;
+  background: #2f2f2f;
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0 0 20px 0;
+}
+
+.Login__form-input:focus {
+  outline: 0;
+  box-shadow: 0 0 2px 1px #4285f4 inset;
+}
+
+.Login__form-input:-webkit-autofill,
+.Login__form-input:-webkit-autofill:hover,
+.Login__form-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 2px 1px #4285f4 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.Login__form-label {
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+  margin: 0 0 10px 0;
+}
+
+.Login__form-input-errors {
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  height: 24px;
+  margin: -10px 0 40px 0;
+}
+
+.Login__form-submit-button {
+  grid-row: 9 / 10;
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  border-radius: 3px;
+  background: #4285f4;
+  padding: 14px 0;
+  box-shadow: none;
+  border: 0;
+  color: #fff;
+  justify-self: end;
+}
+
+.Login__form-submit-button:focus {
+  outline: 0;
+}
