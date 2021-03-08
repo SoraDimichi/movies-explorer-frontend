@@ -25,6 +25,8 @@ const Register = () => {
             type="text"
             id="name"
             onChange={(evt) => handleChange(evt)}
+            minLength="2"
+            maxLength="30"
             required
           />
           <label

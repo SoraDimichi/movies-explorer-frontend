@@ -25,6 +25,8 @@ const Profile = () => {
             id="name"
             onChange={(evt) => handleChange(evt)}
             defaultValue="Виталий"
+            minLength="2"
+            maxLength="30"
             required
           />
           <label
