@@ -6,13 +6,11 @@
   position: relative;
 }
 
-.MoviesCard__image-container {
+.MoviesCard__image {
   grid-area: 1 / 1 / 2 / 4;
   width: 100%;
   height: 151px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  object-fit: cover;
   cursor: pointer;
 }
 

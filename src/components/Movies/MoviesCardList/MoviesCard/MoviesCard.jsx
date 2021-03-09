@@ -25,9 +25,10 @@ const MoviesCard = ({ card }) => {
 
   return (
     <li className="MoviesCard">
-      <div
-        className="MoviesCard__image-container"
-        style={{ backgroundImage: `url('${card.thumbnail}')` }}
+      <img
+        className="MoviesCard__image"
+        src={card.thumbnail}
+        alt={card.nameRU}
       />
       <p className="MoviesCard__title">{card.nameRU}</p>
       {

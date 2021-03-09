@@ -23,7 +23,6 @@ const Header = () => {
           <ul className="Header__navlinks Header__navlinks_type_form-page">
             <li className="Header__navlink-container_logo">
               <NavLink
-                type="button"
                 className="Header__navlink Header__navlink_logo hover-effect"
                 to="/"
               >
@@ -42,7 +41,6 @@ const Header = () => {
           <ul className="Header__navlinks">
             <li className="Header__navlink-container Header__navlink-container_logo">
               <NavLink
-                type="button"
                 className="Header__navlink Header__navlink_logo hover-effect"
                 to="/"
               >
@@ -69,7 +67,6 @@ const Header = () => {
             </li>
             <li className="Header__navlink-container Header__navlink-container_profile">
               <NavLink
-                type="button"
                 className="Header__profile-button hover-effect"
                 to="/profile"
               >
@@ -106,7 +103,6 @@ const Header = () => {
           <ul className="Header__navlinks">
             <li className="Header__navlink-container Header__navlink-container_logo">
               <NavLink
-                type="button"
                 className="Header__navlink Header__navlink_logo hover-effect"
                 to="/"
               >
@@ -123,7 +119,6 @@ const Header = () => {
             </li>
             <li className="Header__navlink-container Header__navlink-container_signin">
               <NavLink
-                type="button"
                 className="Header__navlink Header__navlink_green-button hover-effect"
                 to="/signin"
               >

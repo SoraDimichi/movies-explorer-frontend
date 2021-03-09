@@ -10,10 +10,10 @@ const SearchForm = () => {
   };
 
   return (
-    <section className="SearchForm">
+    <div className="SearchForm">
 
       <div className="SearchForm__container">
-        <form action="" className="SearchForm__form">
+        <form className="SearchForm__form">
           <img
             className="SearchForm__image"
             src={searchIcon}
@@ -36,17 +36,18 @@ const SearchForm = () => {
             <input
               type="checkbox"
               name="filter"
+              id="filter"
               className="SearchForm__switch-checkbox"
               onChange={(evt) => handleChange(evt)}
             />
-            <div className="SearchForm__switch-slider" />
+            <span className="SearchForm__switch-slider" />
             <label className="SearchForm__switch-label" htmlFor="filter">
               Короткометражки
             </label>
           </div>
         </form>
       </div>
-    </section>
+    </div>
   );
 };
 

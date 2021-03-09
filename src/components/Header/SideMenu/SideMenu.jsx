@@ -50,7 +50,6 @@ const SideMenu = ({ isOpen, onClose }) => (
         </li>
         <li className="SideMenu__link-container SideMenu__navlink-container_profile">
           <NavLink
-            type="button"
             onClick={onClose}
             className="SideMenu__profile-button hover-effect"
             to="/profile"
