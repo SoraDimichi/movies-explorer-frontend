@@ -51,12 +51,6 @@ const App = () => {
   const [recMoviesFiltered, setRecMoviesFiltered] = useState([]);
   const [moviesFiltered, setMoviesFiltered] = useState([]);
 
-  const [moviesError, setMoviesError] = useState('');
-  const [recMoviesError, setRecMoviesError] = useState('');
-
-  // const [areNoMoviesFound, setNoMoviesFound] = useState(false);
-  // const [areNoRecMoviesFound, setNoRecMoviesFound] = useState(false);
-
   const [searchString, setSearchString] = useState('');
   const [shortMovieFilter, setShortMovieFilter] = useState(false);
   const [viewCount, setViewCount] = useState(4);
@@ -190,13 +184,6 @@ const App = () => {
         setIsHasMore(true);
         return acc;
       }
-
-      // if (acc.length === 0) {
-      //   setNoMoviesFound(true);
-      // } else {
-      //   setNoMoviesFound(false);
-      // }
-
       return isOk ? [...acc, movie] : acc;
     }, []));
   }, [searchString, shortMovieFilter, movies, setMoviesFiltered, viewCount]);
@@ -208,13 +195,6 @@ const App = () => {
       const isOk = isOkByShort
         && (searchString
           ? normalizeSearchString(nameRU).includes(searchString) : true);
-
-      // if (acc.length === 0) {
-      //   setNoRecMoviesFound(true);
-      // } else {
-      //   setNoRecMoviesFound(false);
-      // }
-
       return isOk ? [...acc, movie] : acc;
     }, []));
   }, [searchString, shortMovieFilter, recMovies, setRecMoviesFiltered]);
@@ -225,12 +205,10 @@ const App = () => {
         (recommendedMoviesData) => {
           setRecMoviesUpdating(true);
           setRecMovies(recommendedMoviesData);
-          setRecMoviesError('');
         },
       ).catch(
         (err) => {
           console.log(err);
-          setRecMoviesError(err.message);
           setRecMovies([]);
         },
       ).finally(() => {
@@ -242,14 +220,12 @@ const App = () => {
     moviesApi.getMovies()
       .then(
         (moviesData) => {
-          setMoviesError(null);
           setMovies(transformInitalMoviesArray(moviesData));
           setMoviesUpdating(true);
         },
       ).catch(
         (err) => {
           console.log(err);
-          setMoviesError(true);
           setMovies([]);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
@@ -312,8 +288,6 @@ const App = () => {
             setShortMovieFilter={setShortMovieFilter}
             updateViewCount={updateViewCount}
             isHasMore={isHasMore}
-            moviesError={moviesError}
-            // areNoMoviesFound={areNoMoviesFound}
           />
           <ProtectedRoute
             path="/saved-movies"
@@ -324,8 +298,6 @@ const App = () => {
             onUpdate={areRecMoviesUpdating}
             setSearchString={updateSearch}
             setShortMovieFilter={setShortMovieFilter}
-            recMoviesError={recMoviesError}
-            // areNoRecMoviesFound={areNoRecMoviesFound}
           />
           <ProtectedRoute
             path="/profile"

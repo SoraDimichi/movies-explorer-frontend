@@ -59,8 +59,11 @@ const Login = ({ onLogin }) => {
           </span>
           <button
             type="submit"
-            className={`Login__form-submit-button ${(!isValid)
-              ? 'Login__form-submit-button_disabled ' : ''} hover-effect"`}
+            className={
+              `Login__form-submit-button
+               ${(!isValid) ? 'Login__form-submit-button_disabled ' : ''}
+               hover-effect"`
+            }
           >
             Войти
           </button>

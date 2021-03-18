@@ -56,21 +56,6 @@ export const setInitialLikeState = ({ movieId } = {}, recMovies) => (recMovies &
   ? recMovies.some(({ movieId: recMovieId }) => recMovieId === movieId)
   : false);
 
-// export const setInitialLikeState = (movie, recMovies) => {
-//   if (recMovies !== undefined) {
-//     let i = 0;
-//     let isLiked;
-//     while (i < recMovies.length && isLiked === undefined) {
-//       if (movie.movieId === recMovies[i].movieId) {
-//         isLiked = true;
-//       }
-//       i++;
-//     }
-//     return isLiked;
-//   }
-//   return false;
-// };
-
 export const getTimeFromMins = (mins) => {
   const hours = Math.trunc(mins / 60);
   const minutes = mins % 60;

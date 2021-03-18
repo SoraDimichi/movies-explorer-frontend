@@ -10,7 +10,6 @@ const SavedMovies = ({
   onUpdate,
   setSearchString,
   setShortMovieFilter,
-  recMoviesError,
 }) => (
   <main className="Movies">
     <div className="Movies__container">
@@ -23,13 +22,7 @@ const SavedMovies = ({
           : ((movies.length === 0)
             ? (
               <p className="Movies__error">
-                {
-                recMoviesError.includes('рекомедовали')
-                  ? 'Вы еще не рекомендовали фильмы'
-                  : `Во время запроса произошла ошибка.
-                       Возможно, проблема с соединением или сервер недоступен.
-                       Подождите немного и попробуйте ещё раз`
-              }
+                Вы еще не рекомендовали фильмы
               </p>
             )
             : (

@@ -9,20 +9,18 @@ import useFormWithValidation from '../Hooks/useFormWithValidation';
 
 const Profile = ({ onLogout, onEditProfile }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser);
+  const [name, setName] = useState(currentUser.name);
 
   const {
     values,
     handleChange,
     errors,
     isValid,
-    resetForm,
   } = useFormWithValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onEditProfile(values);
-    resetForm();
   };
 
   useEffect(() => {

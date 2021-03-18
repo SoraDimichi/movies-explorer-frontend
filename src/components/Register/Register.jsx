@@ -9,13 +9,11 @@ const Register = ({ onRegister }) => {
     handleChange,
     errors,
     isValid,
-    resetForm,
   } = useFormWithValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onRegister(values);
-    resetForm();
   };
 
   return (
