@@ -1,5 +1,5 @@
 export const MOVIES_API_URL = 'https://api.nomoreparties.co';
-export const MAIN_API_URL = 'http://localhost:3333';
+export const MAIN_API_URL = 'https://api.movies-explorer.soradimichi.com';
 const VIDEO_404_URL = 'https://youtu.be/dQw4w9WgXcQ';
 const IMAGE_404_URL = 'https://i.ibb.co/Ws2T0Lv/image-not-found.jpg';
 export const isLoginLoading = 'isLoginLoading';

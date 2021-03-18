@@ -1,8 +1,8 @@
 # Дипломный проект
 
-> Я практически умер, пока писал фронт
+> Фронтенд рвущий небеса!
 
-Что бы воспользоваться – не забудьте зарегистрироваться.
+
 
 Фронт: https://movies-explorer.soradimichi.com/ <br>
 Бэк: https://api.movies-explorer.soradimichi.com/
