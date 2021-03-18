@@ -23,6 +23,12 @@ import MoviesApi from '../../utils/MoviesApi';
 import {
   MAIN_API_URL,
   MOVIES_API_URL,
+  SHORT_MOVIE_DURATION,
+  WIDTH_BREAKPOINT_AT_1200PX,
+  WIDTH_BREAKPOINT_AT_909PX,
+  NUMBER_OF_MOVIES_IN_ROW_ABOVE_1200PX_WIDTH,
+  NUMBER_OF_MOVIES_IN_ROW_1200PX_909PX_WIDTH,
+  NUMBER_OF_MOVIES_IN_ROW_BELLOW_909PX_WIDTH,
   isLoginLoading,
   transformInitalMoviesArray,
   findRecMovieByMovieId,
@@ -58,12 +64,12 @@ const App = () => {
   const { width } = useWindowSize();
 
   useEffect(() => {
-    if (width > 1200) {
-      setMovieAdd(4);
-    } else if (width > 909) {
-      setMovieAdd(3);
+    if (width > WIDTH_BREAKPOINT_AT_1200PX) {
+      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_ABOVE_1200PX_WIDTH);
+    } else if (width > WIDTH_BREAKPOINT_AT_909PX) {
+      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_1200PX_909PX_WIDTH);
     } else {
-      setMovieAdd(2);
+      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_BELLOW_909PX_WIDTH);
     }
   }, [width]);
 
@@ -175,7 +181,7 @@ const App = () => {
     setIsHasMore(false);
     setMoviesFiltered((movies || []).reduce((acc, movie) => {
       const { duration, nameRU } = movie;
-      const isOkByShort = shortMovieFilter ? duration < 41 : true;
+      const isOkByShort = shortMovieFilter ? duration <= SHORT_MOVIE_DURATION : true;
       const isOk = isOkByShort
         && searchString
         && normalizeSearchString(nameRU).includes(searchString);
@@ -191,7 +197,7 @@ const App = () => {
   useEffect(() => {
     setRecMoviesFiltered((recMovies || []).reduce((acc, movie) => {
       const { duration, nameRU } = movie;
-      const isOkByShort = shortMovieFilter ? duration < 41 : true;
+      const isOkByShort = shortMovieFilter ? duration <= SHORT_MOVIE_DURATION : true;
       const isOk = isOkByShort
         && (searchString
           ? normalizeSearchString(nameRU).includes(searchString) : true);

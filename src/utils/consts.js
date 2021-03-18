@@ -2,6 +2,12 @@ export const MOVIES_API_URL = 'https://api.nomoreparties.co';
 export const MAIN_API_URL = 'https://api.movies-explorer.soradimichi.com';
 const VIDEO_404_URL = 'https://youtu.be/dQw4w9WgXcQ';
 const IMAGE_404_URL = 'https://i.ibb.co/Ws2T0Lv/image-not-found.jpg';
+export const SHORT_MOVIE_DURATION = 40;
+export const WIDTH_BREAKPOINT_AT_1200PX = 1200;
+export const WIDTH_BREAKPOINT_AT_909PX = 909;
+export const NUMBER_OF_MOVIES_IN_ROW_ABOVE_1200PX_WIDTH = 4;
+export const NUMBER_OF_MOVIES_IN_ROW_1200PX_909PX_WIDTH = 3;
+export const NUMBER_OF_MOVIES_IN_ROW_BELLOW_909PX_WIDTH = 2;
 export const isLoginLoading = 'isLoginLoading';
 
 export const transformInitalMoviesArray = (moviesData) => {
