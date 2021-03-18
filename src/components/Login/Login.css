@@ -82,6 +82,7 @@
   display: grid;
   align-items: start;
   grid-template-rows: repeat(7, auto) 1fr max-content;
+  position: relative;
 }
 
 .Login__form-input {
@@ -94,7 +95,11 @@
   color: #fff;
   font-size: 13px;
   line-height: 16px;
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
+}
+
+.Login__form-input_errored {
+  color: #ffd6cd;
 }
 
 .Login__form-input:focus {
@@ -117,12 +122,25 @@
   margin: 0 0 10px 0;
 }
 
-.Login__form-input-errors {
+.Login__form-input-error {
+  position: absolute;
+  color: #ee3465;
   font-size: 10px;
   line-height: 12px;
-  color: #ee3465;
-  height: 24px;
-  margin: -10px 0 40px 0;
+  text-align: right;
+  opacity: 1;
+}
+
+.Login__form-input-error_email {
+  top: 48px;
+  right: 0;
+  grid-row: 2 / 3;
+}
+
+.Login__form-input-error_password {
+  grid-row: 4 / 5;
+  top: 48px;
+  right: 0;
 }
 
 .Login__form-submit-button {
@@ -139,6 +157,13 @@
   border: 0;
   color: #fff;
   justify-self: end;
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
+}
+
+.Login__form-submit-button_disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .Login__form-submit-button:focus {

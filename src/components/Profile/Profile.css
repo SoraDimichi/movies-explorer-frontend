@@ -99,6 +99,7 @@
   grid-template-rows: repeat(7, auto) 1fr max-content;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  position: relative;
 }
 
 .Profile__form-input {
@@ -110,6 +111,11 @@
   line-height: 13px;
   color: #fff;
   text-align: right;
+  transition: color 0.3s ease-in-out;
+}
+
+.Profile__form-input_errored {
+  color: #ffd6cd;
 }
 
 .Profile__form-input:not(:last-of-type) {
@@ -140,12 +146,25 @@
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.Profile__form-input-errors {
+.Profile__form-input-error {
+  position: absolute;
+  color: #ee3465;
   font-size: 10px;
   line-height: 12px;
-  color: #ee3465;
-  height: 24px;
-  margin: -10px 0 40px 0;
+  text-align: right;
+  opacity: 1;
+}
+
+.Profile__form-input-error_name {
+  top: -20px;
+  right: 0;
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+.Profile__form-input-error_email {
+  grid-area: 2 / 1 / 3 / 3;
+  top: 55px;
+  right: 0;
 }
 
 .Profile__form-submit-button {
@@ -161,7 +180,14 @@
   box-shadow: none;
   border: 0;
   color: #fff;
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
   justify-self: end;
+}
+
+.Profile__form-submit-button_disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .Profile__form-submit-button:focus {
