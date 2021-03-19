@@ -153,12 +153,15 @@ const App = () => {
         (likedMovie) => {
           setRecMovies((currentRecMovies) => updateRecList(currentRecMovies, likedMovie));
           setInfoTooltipMessage('Вы успешно рекомендовали тайтл!');
+          setInfoTooltipPopup(true);
         },
       ).catch(
         (err) => {
-          setLoading(false);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
-          setInfoTooltipPopup(true);
+        },
+      ).finally(
+        () => {
+          setLoading(false);
         },
       );
   };
@@ -176,6 +179,10 @@ const App = () => {
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
         },
+      ).finally(
+        () => {
+          setLoading(false);
+        },
       );
   };
 
@@ -192,6 +199,10 @@ const App = () => {
           setLoading(false);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
+        },
+      ).finally(
+        () => {
+          setLoading(false);
         },
       );
   };

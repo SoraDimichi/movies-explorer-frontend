@@ -57,7 +57,6 @@ const Login = ({ onLogin, onLoading }) => {
           <span className="Login__form-input-error Login__form-input-error_password">
             {errors.password}
           </span>
-          {console.log(onLoading)}
           <button
             type="submit"
             className={
