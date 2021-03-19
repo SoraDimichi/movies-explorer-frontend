@@ -1,0 +1,100 @@
+.infoTooltip {
+  visibility: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+  display: grid;
+  opacity: 0;
+  z-index: 2;
+  justify-content: center;
+  align-content: center;
+}
+
+.infoTooltip_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.infoTooltip__overlay {
+  z-index: 2;
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+}
+
+.infoTooltip__container {
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 30px minmax(240px, 360px) 30px;
+  grid-template-rows: 100px 120px 40px min-content 50px;
+  background: #202020;
+  border-radius: 3px;
+  margin: 0 30px;
+  position: relative;
+}
+
+@media screen and (max-width: 514px) {
+  .infoTooltip__container {
+    grid-template-rows: 80px 120px 40px min-content 30px;
+  }
+}
+
+.infoTooltip__message {
+  grid-area: 4 / 2 / 5 / 3;
+  white-space: pre-wrap;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin: 0;
+}
+
+@media screen and (max-width: 514px) {
+  .infoTooltip__message {
+    font-size: 24px;
+    font-weight: 400;
+  }
+}
+
+.infoTooltip__image {
+  grid-area: 2 / 2 / 3 / 3;
+  width: 120px;
+  height: 120px;
+  justify-self: center;
+}
+
+.infoTooltip__close-button-image {
+  pointer-events: none;
+}
+
+.infoTooltip__close-button {
+  z-index: 4;
+  user-select: none;
+  grid-area: 1 / 1 / 5 / 5;
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30px;
+  right: 30px;
+}
+
+@media screen and (max-width: 514px) {
+  .infoTooltip__close-button {
+    top: 20px;
+    right: 20px;
+  }
+}

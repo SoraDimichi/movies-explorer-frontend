@@ -1,21 +1,32 @@
 import React from 'react';
 import './MoviesCardList.css';
-import moviesConfig from '../../../utils/configs';
 import MoviesCard from './MoviesCard/MoviesCard';
 
-const MoviesCardList = () => (
+const MoviesCardList = ({
+  recMovieArr, movies, onDeleteMovie, onAddMovie, updateViewCount, isHasMore, onLoading,
+}) => (
   <div className="MoviesCardList">
-    <div className="MoviesCardList__container">
-      <ul className="MoviesCardList__cards">
-        {moviesConfig.map((card) => (
-          <MoviesCard
-            card={card}
-            key={card.movieId}
-          />
-        ))}
-      </ul>
-      <button type="button" className="MoviesCardList__load-more-button hover-effect">Ещё</button>
-    </div>
+    <ul className="MoviesCardList__cards">
+      {movies.map((movie) => (
+        <MoviesCard
+          recMovieArr={recMovieArr}
+          movie={movie}
+          onDeleteMovie={onDeleteMovie}
+          onAddMovie={onAddMovie}
+          key={movie.movieId}
+          onLoading={onLoading}
+        />
+      ))}
+    </ul>
+    { isHasMore ? (
+      <button
+        onClick={updateViewCount}
+        type="button"
+        className="MoviesCardList__load-more-button hover-effect"
+      >
+        Ещё
+      </button>
+    ) : null}
   </div>
 );
 

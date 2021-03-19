@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { useLocation, NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import profileIcon from '../../images/profile-icon.svg';
 import SideMenu from './SideMenu/SideMenu';
 import hamburgerIcon from '../../images/hamburger-icon.svg';
+import { isLoginLoading } from '../../utils/consts';
 
-const Header = () => {
+const Header = ({ loggedIn }) => {
   const location = useLocation();
-  const [isSideMenuOpen, setSideMenu] = React.useState(false);
+  const [isSideMenuOpen, setSideMenu] = useState(false);
 
   const isFormPage = location.pathname === '/signup' || location.pathname === '/signin';
-  const isDefendedPage = location.pathname === '/movies'
-    || location.pathname === '/saved-movies'
-    || location.pathname === '/profile';
-  const isMainPage = location.pathname === '/';
 
   if (isFormPage) {
     return (
@@ -34,7 +31,7 @@ const Header = () => {
       </header>
     );
   }
-  if (isDefendedPage) {
+  if (loggedIn && loggedIn !== isLoginLoading) {
     return (
       <header className="Header">
         <nav className="Header__container">
@@ -95,42 +92,38 @@ const Header = () => {
       </header>
     );
   }
-
-  if (isMainPage) {
-    return (
-      <header className="Header">
-        <nav className="Header__container">
-          <ul className="Header__navlinks">
-            <li className="Header__navlink-container Header__navlink-container_logo">
-              <NavLink
-                className="Header__navlink Header__navlink_logo hover-effect"
-                to="/"
-              >
-                <img src={logo} alt="Логотип" className="Header__logo-image" />
-              </NavLink>
-            </li>
-            <li className="Header__navlink-container Header__navlink-container_signup">
-              <NavLink
-                className="Header__navlink hover-effect"
-                to="/signup"
-              >
-                Регистрация
-              </NavLink>
-            </li>
-            <li className="Header__navlink-container Header__navlink-container_signin">
-              <NavLink
-                className="Header__navlink Header__navlink_green-button hover-effect"
-                to="/signin"
-              >
-                Логин
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    );
-  }
-  return null;
+  return (
+    <header className="Header">
+      <nav className="Header__container">
+        <ul className="Header__navlinks">
+          <li className="Header__navlink-container Header__navlink-container_logo">
+            <NavLink
+              className="Header__navlink Header__navlink_logo hover-effect"
+              to="/"
+            >
+              <img src={logo} alt="Логотип" className="Header__logo-image" />
+            </NavLink>
+          </li>
+          <li className="Header__navlink-container Header__navlink-container_signup">
+            <NavLink
+              className="Header__navlink hover-effect"
+              to="/signup"
+            >
+              Регистрация
+            </NavLink>
+          </li>
+          <li className="Header__navlink-container Header__navlink-container_signin">
+            <NavLink
+              className="Header__navlink Header__navlink_green-button hover-effect"
+              to="/signin"
+            >
+              Логин
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 };
 
 export default Header;
