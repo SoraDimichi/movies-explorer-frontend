@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Login.css';
 import useFormWithValidation from '../Hooks/useFormWithValidation';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, onLoading }) => {
   const {
     values,
     handleChange,
@@ -57,11 +57,12 @@ const Login = ({ onLogin }) => {
           <span className="Login__form-input-error Login__form-input-error_password">
             {errors.password}
           </span>
+          {console.log(onLoading)}
           <button
             type="submit"
             className={
               `Login__form-submit-button
-               ${(!isValid) ? 'Login__form-submit-button_disabled ' : ''}
+               ${(!isValid || onLoading) ? 'Login__form-submit-button_disabled ' : ''}
                hover-effect"`
             }
           >

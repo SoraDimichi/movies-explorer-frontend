@@ -16,6 +16,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
     handleChange,
     errors,
     isValid,
+    onLoading,
   } = useFormWithValidation();
 
   const handleSubmit = (evt) => {
@@ -79,7 +80,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
           <span className="Profile__form-input-errors" id="form-input-errors" />
           <button
             type="submit"
-            className={`Profile__form-submit-button  ${(!isValid)
+            className={`Profile__form-submit-button  ${(!isValid || onLoading)
               ? 'Profile__form-submit-button_disabled ' : ''}  hover-effect`}
           >
             Редактировать

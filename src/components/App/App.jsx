@@ -24,11 +24,11 @@ import {
   MAIN_API_URL,
   MOVIES_API_URL,
   SHORT_MOVIE_DURATION,
-  WIDTH_BREAKPOINT_AT_1200PX,
-  WIDTH_BREAKPOINT_AT_909PX,
-  NUMBER_OF_MOVIES_IN_ROW_ABOVE_1200PX_WIDTH,
-  NUMBER_OF_MOVIES_IN_ROW_1200PX_909PX_WIDTH,
-  NUMBER_OF_MOVIES_IN_ROW_BELLOW_909PX_WIDTH,
+  CARDS_TOP_BREAKPOINT,
+  CARDS_MID_BREAKPOINT,
+  CARDS_IN_ROW_ABOVE_TOP_BREAKPOINT,
+  CARDS_IN_ROW_BETWEEN_TOP_AND_MID_BREAKPOINT,
+  CARDS_IN_ROW_BELOW_MID_BREAKPOINT,
   isLoginLoading,
   transformInitalMoviesArray,
   findRecMovieByMovieId,
@@ -40,6 +40,7 @@ import {
 const App = () => {
   const history = useHistory();
   const token = localStorage.getItem('token');
+  const storedMovies = JSON.parse(localStorage.getItem('movies'));
 
   const moviesApi = new MoviesApi(MOVIES_API_URL);
   const mainApi = new MainApi(MAIN_API_URL);
@@ -54,6 +55,7 @@ const App = () => {
   const [recMovies, setRecMovies] = useState([]);
   const [areMoviesUpdating, setMoviesUpdating] = useState(false);
   const [areRecMoviesUpdating, setRecMoviesUpdating] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [recMoviesFiltered, setRecMoviesFiltered] = useState([]);
   const [moviesFiltered, setMoviesFiltered] = useState([]);
 
@@ -64,12 +66,12 @@ const App = () => {
   const { width } = useWindowSize();
 
   useEffect(() => {
-    if (width > WIDTH_BREAKPOINT_AT_1200PX) {
-      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_ABOVE_1200PX_WIDTH);
-    } else if (width > WIDTH_BREAKPOINT_AT_909PX) {
-      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_1200PX_909PX_WIDTH);
+    if (width > CARDS_TOP_BREAKPOINT) {
+      setMovieAdd(CARDS_IN_ROW_ABOVE_TOP_BREAKPOINT);
+    } else if (width > CARDS_MID_BREAKPOINT) {
+      setMovieAdd(CARDS_IN_ROW_BETWEEN_TOP_AND_MID_BREAKPOINT);
     } else {
-      setMovieAdd(NUMBER_OF_MOVIES_IN_ROW_BELLOW_909PX_WIDTH);
+      setMovieAdd(CARDS_IN_ROW_BELOW_MID_BREAKPOINT);
     }
   }, [width]);
 
@@ -79,22 +81,25 @@ const App = () => {
   }, [movieAdd]);
 
   const handleRegister = (data) => {
+    setLoading(true);
     mainApi.register(data)
       .then(
-        (res) => {
-          if (res) {
-            history.push('/signin');
-            setInfoTooltipMessage('Вы успешно зарегистрировались!');
-          }
+        () => {
+          history.push('/signin');
+          setInfoTooltipMessage('Вы успешно зарегистрировались!');
         },
       ).catch(
         (err) => {
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
         },
-      ).finally(() => setInfoTooltipPopup(true));
+      ).finally(() => {
+        setLoading(false);
+        setInfoTooltipPopup(true);
+      });
   };
 
   const handleLogin = (data) => {
+    setLoading(true);
     mainApi.login(data)
       .then((res) => {
         if (res) {
@@ -109,17 +114,15 @@ const App = () => {
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
         },
       ).finally(
-        () => setInfoTooltipPopup(true),
+        () => {
+          setLoading(false);
+          setInfoTooltipPopup(true);
+        },
       );
   };
 
-  const handleLogout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('token');
-    history.push('/');
-  };
-
   const handleEditProfile = (data) => {
+    setLoading(true);
     mainApi.updateMyProfile(data, token)
       .then(
         (res) => {
@@ -129,11 +132,22 @@ const App = () => {
       ).catch(
         (err) => setInfoTooltipMessage(`Ошибка: ${err.message}`),
       ).finally(
-        () => setInfoTooltipPopup(true),
+        () => {
+          setLoading(false);
+          setInfoTooltipPopup(true);
+        },
       );
   };
 
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('token');
+    localStorage.removeItem('movies');
+    history.push('/');
+  };
+
   const handleLikeMovie = (movie) => {
+    setLoading(true);
     mainApi.createMovie(movie, token)
       .then(
         (likedMovie) => {
@@ -142,6 +156,7 @@ const App = () => {
         },
       ).catch(
         (err) => {
+          setLoading(false);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
         },
@@ -149,6 +164,7 @@ const App = () => {
   };
 
   const handleDislikeMovie = (movie) => {
+    setLoading(true);
     mainApi.deleteMovie(findRecMovieByMovieId(movie.movieId, recMovies), token)
       .then(
         (dislikedMovie) => {
@@ -156,6 +172,7 @@ const App = () => {
         },
       ).catch(
         (err) => {
+          setLoading(false);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
         },
@@ -163,6 +180,7 @@ const App = () => {
   };
 
   const handleDeleteMovieFromRecommendations = (movie) => {
+    setLoading(true);
     mainApi.deleteMovie(movie._id, token)
       .then(
         (deletedMovie) => {
@@ -171,6 +189,7 @@ const App = () => {
       )
       .catch(
         (err) => {
+          setLoading(false);
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
           setInfoTooltipPopup(true);
         },
@@ -206,10 +225,10 @@ const App = () => {
   }, [searchString, shortMovieFilter, recMovies, setRecMoviesFiltered]);
 
   const getRecMovies = () => {
+    setRecMoviesUpdating(true);
     mainApi.getMovies(token)
       .then(
         (recommendedMoviesData) => {
-          setRecMoviesUpdating(true);
           setRecMovies(recommendedMoviesData);
         },
       ).catch(
@@ -223,11 +242,13 @@ const App = () => {
   };
 
   const getMovies = () => {
+    setMoviesUpdating(true);
     moviesApi.getMovies()
       .then(
         (moviesData) => {
-          setMovies(transformInitalMoviesArray(moviesData));
-          setMoviesUpdating(true);
+          const normalizedMovies = transformInitalMoviesArray(moviesData);
+          setMovies(normalizedMovies);
+          localStorage.setItem('movies', JSON.stringify(normalizedMovies));
         },
       ).catch(
         (err) => {
@@ -248,7 +269,7 @@ const App = () => {
           (data) => {
             setUserInfo(() => ({ ...data }));
             setLoggedIn(true);
-            getMovies();
+            !storedMovies ? getMovies() : setMovies(storedMovies);
             getRecMovies();
           },
         )
@@ -276,10 +297,16 @@ const App = () => {
             <Main />
           </Route>
           <Route path="/signin">
-            <Login onLogin={handleLogin} />
+            <Login
+              onLogin={handleLogin}
+              onLoading={isLoading}
+            />
           </Route>
           <Route path="/signup">
-            <Register onRegister={handleRegister} />
+            <Register
+              onRegister={handleRegister}
+              onLoading={isLoading}
+            />
           </Route>
           <ProtectedRoute
             path="/movies"
@@ -294,6 +321,7 @@ const App = () => {
             setShortMovieFilter={setShortMovieFilter}
             updateViewCount={updateViewCount}
             isHasMore={isHasMore}
+            onLoading={isLoading}
           />
           <ProtectedRoute
             path="/saved-movies"
@@ -304,6 +332,7 @@ const App = () => {
             onUpdate={areRecMoviesUpdating}
             setSearchString={updateSearch}
             setShortMovieFilter={setShortMovieFilter}
+            onLoading={isLoading}
           />
           <ProtectedRoute
             path="/profile"
@@ -311,6 +340,7 @@ const App = () => {
             loggedIn={loggedIn}
             onEditProfile={handleEditProfile}
             onLogout={handleLogout}
+            onLoading={isLoading}
           />
           <Route path="*" component={Page404} />
         </Switch>

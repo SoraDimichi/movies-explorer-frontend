@@ -10,6 +10,7 @@ const SavedMovies = ({
   onUpdate,
   setSearchString,
   setShortMovieFilter,
+  onLoading,
 }) => (
   <main className="Movies">
     <div className="Movies__container">
@@ -29,6 +30,7 @@ const SavedMovies = ({
               <SavedMoviesCardList
                 movies={movies}
                 onDeleteMovie={onDeleteMovie}
+                onLoading={onLoading}
               />
             ))
       }

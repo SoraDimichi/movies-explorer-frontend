@@ -9,7 +9,7 @@ import {
 } from '../../../../utils/consts';
 
 const MoviesCard = ({
-  recMovieArr, movie, onAddMovie, onDeleteMovie,
+  recMovieArr, movie, onAddMovie, onDeleteMovie, onLoading,
 }) => {
   const [isLiked, setIsLiked] = useState(setInitialLikeState(movie, recMovieArr));
 
@@ -39,7 +39,9 @@ const MoviesCard = ({
       <p className="MoviesCard__title">{movie.nameRU}</p>
       <button
         type="button"
-        className="MoviesCard__button moviesCard__button_like hover-effect"
+        className={`MoviesCard__button
+        ${onLoading ? 'moviesCard__button_disabled' : ''}
+         moviesCard__button_like hover-effect`}
         onClick={handleLike}
       >
         <img src={isLiked ? likedIcon : likeIcon} alt="лайк" />

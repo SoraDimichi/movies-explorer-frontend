@@ -14,6 +14,7 @@ const Movies = ({
   setShortMovieFilter,
   updateViewCount,
   isHasMore,
+  onLoading,
 }) => (
   <main className="Movies">
     <div className="Movies__container">
@@ -40,6 +41,7 @@ const Movies = ({
                   onAddMovie={onAddMovie}
                   updateViewCount={updateViewCount}
                   isHasMore={isHasMore}
+                  onLoading={onLoading}
                 />
               ))
       }

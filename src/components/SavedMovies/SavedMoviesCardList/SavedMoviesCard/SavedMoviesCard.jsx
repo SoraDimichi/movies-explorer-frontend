@@ -6,7 +6,7 @@ import {
 } from '../../../../utils/consts';
 
 const SavedMoviesCard = ({
-  movie, onDeleteMovie,
+  movie, onDeleteMovie, onLoading,
 }) => {
   const handleDelete = () => {
     onDeleteMovie(movie);
@@ -30,7 +30,9 @@ const SavedMoviesCard = ({
       <div className="MoviesCard__button-container">
         <button
           type="button"
-          className="MoviesCard__button moviesCard__button_delete hover-effect"
+          className={`MoviesCard__button
+          ${onLoading ? 'moviesCard__button_disabled' : ''}
+          moviesCard__button_delete hover-effect`}
           onClick={handleDelete}
         >
           <img src={deleteIcon} alt="удалить" />

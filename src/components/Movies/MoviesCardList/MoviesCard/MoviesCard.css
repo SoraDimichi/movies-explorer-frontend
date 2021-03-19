@@ -97,6 +97,10 @@
   align-items: center;
 }
 
+.moviesCard__button_disabled {
+  pointer-events: none;
+}
+
 .MoviesCard__duration {
   grid-area: 7 / 1 / 8 / 4;
   color: #8b8b8b;

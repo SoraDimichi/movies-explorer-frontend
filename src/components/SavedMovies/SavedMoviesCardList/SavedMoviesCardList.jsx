@@ -3,7 +3,7 @@ import './SavedMoviesCardList.css';
 import SavedMoviesCard from './SavedMoviesCard/SavedMoviesCard';
 
 const SavedMoviesCardList = ({
-  movies, onDeleteMovie,
+  movies, onDeleteMovie, onLoading,
 }) => (
   <div className="MoviesCardList">
     <ul className="MoviesCardList__cards">
@@ -12,6 +12,7 @@ const SavedMoviesCardList = ({
           movie={movie}
           onDeleteMovie={onDeleteMovie}
           key={movie.movieId}
+          onLoading={onLoading}
         />
       ))}
     </ul>

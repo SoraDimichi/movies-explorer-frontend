@@ -3,7 +3,7 @@ import './MoviesCardList.css';
 import MoviesCard from './MoviesCard/MoviesCard';
 
 const MoviesCardList = ({
-  recMovieArr, movies, onDeleteMovie, onAddMovie, updateViewCount, isHasMore,
+  recMovieArr, movies, onDeleteMovie, onAddMovie, updateViewCount, isHasMore, onLoading,
 }) => (
   <div className="MoviesCardList">
     <ul className="MoviesCardList__cards">
@@ -14,6 +14,7 @@ const MoviesCardList = ({
           onDeleteMovie={onDeleteMovie}
           onAddMovie={onAddMovie}
           key={movie.movieId}
+          onLoading={onLoading}
         />
       ))}
     </ul>

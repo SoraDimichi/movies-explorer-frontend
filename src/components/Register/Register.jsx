@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Register.css';
 import useFormWithValidation from '../Hooks/useFormWithValidation';
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, onLoading }) => {
   const {
     values,
     handleChange,
@@ -79,7 +79,7 @@ const Register = ({ onRegister }) => {
           </span>
           <button
             type="submit"
-            className={`Register__form-submit-button ${(!isValid)
+            className={`Register__form-submit-button ${(!isValid || onLoading)
               ? 'Register__form-submit-button_disabled ' : ''} hover-effect`}
           >
             Зарегистрироваться
