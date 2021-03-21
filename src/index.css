@@ -24,3 +24,7 @@ code {
     'Courier New',
     monospace;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
