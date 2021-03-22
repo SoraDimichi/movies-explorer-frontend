@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className="Footer">
       <div className="Footer__container">
-        <p className="Footer__about">Учебный проект Яндекс.Практикум х BeatFilm.</p>
+        <p className="Footer__about">Проект BeatFilm.</p>
         <p className="Footer__copyright">© 2020</p>
         <nav className="Footer__social-menu">
           <ul className="Footer__social-links">
