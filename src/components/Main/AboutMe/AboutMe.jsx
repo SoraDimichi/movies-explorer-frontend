@@ -34,12 +34,22 @@ const AboutMe = () => (
           </li>
           <li>
             <a
-              href={storyPhoto}
+              href="https://hh.ru/resume/2c997cafff026ed8bb0039ed1f6a7a4a434567"
               className="AboutMe__social-link hover-effect"
               target="_blank"
               rel="noopener noreferrer"
             >
               hh.ru
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/dmitry-sorokin-090130209"
+              className="AboutMe__social-link hover-effect"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
             </a>
           </li>
         </ul>

@@ -18,7 +18,7 @@ const Portfolio = () => (
           </li>
           <li className="Portfolio__link-container">
             <a
-              href="https://hh.ru/resume/2c997cafff026ed8bb0039ed1f6a7a4a434567"
+              href="https://github.com/SoraDimichi/active-citizen-poet-2025-frontend"
               className="Portfolio__link hover-effect"
               target="_blank"
               rel="noopener noreferrer"
@@ -29,7 +29,7 @@ const Portfolio = () => (
           </li>
           <li className="Portfolio__link-container">
             <a
-              href="https://hh.ru/resume/2c997cafff026ed8bb0039ed1f6a7a4a434567"
+              href="https://github.com/SoraDimichi/react-mesto-api-full"
               className="Portfolio__link hover-effect"
               target="_blank"
               rel="noopener noreferrer"

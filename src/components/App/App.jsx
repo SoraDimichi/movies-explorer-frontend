@@ -152,12 +152,11 @@ const App = () => {
       .then(
         (likedMovie) => {
           setRecMovies((currentRecMovies) => updateRecList(currentRecMovies, likedMovie));
-          setInfoTooltipMessage('Вы успешно рекомендовали тайтл!');
-          setInfoTooltipPopup(true);
         },
       ).catch(
         (err) => {
           setInfoTooltipMessage(`Ошибка: ${err.message}`);
+          setInfoTooltipPopup(true);
         },
       ).finally(
         () => {

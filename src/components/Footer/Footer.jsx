@@ -22,22 +22,22 @@ const Footer = () => {
           <ul className="Footer__social-links">
             <li>
               <a
-                href="https://praktikum.yandex.ru/web/"
-                className="Footer__social-link hover-effect"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Яндекс.Практикум
-              </a>
-            </li>
-            <li>
-              <a
                 href="https://github.com/SoraDimichi"
                 className="Footer__social-link hover-effect"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Github
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/dmitry-sorokin-090130209"
+                className="Footer__social-link hover-effect"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
               </a>
             </li>
             <li>
